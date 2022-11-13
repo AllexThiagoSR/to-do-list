@@ -2,7 +2,8 @@ const addTaskButton = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const list = document.getElementById('lista-tarefas');
 const clicked = document.getElementsByClassName('clicked');
-const clearList = document.getElementById('apaga-tudo');
+const clearListButtton = document.getElementById('apaga-tudo');
+const removeCompletedButton = document.getElementById('remover-finalizados');
 
 const selectTask = (event) => {
   const target = event.target;
@@ -41,6 +42,14 @@ addTaskButton.addEventListener('click', () => {
   }
 });
 
-clearList.addEventListener('click', () =>{
+clearListButtton.addEventListener('click', () =>{
   list.innerHTML = '';
+});
+
+removeCompletedButton.addEventListener('click', () => {
+  const completed = document.querySelectorAll('.completed');
+
+  for (let index in Object.keys(completed)) {
+    completed[index].remove();
+  }
 });
