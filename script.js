@@ -5,6 +5,8 @@ const clicked = document.getElementsByClassName('clicked');
 const clearListButtton = document.getElementById('apaga-tudo');
 const removeCompletedButton = document.getElementById('remover-finalizados');
 const saveButton = document.getElementById('salvar-tarefas');
+const moveUp = document.getElementById('mover-cima');
+const moveDown = document.getElementById('mover-baixo');
 
 const selectTask = (event) => {
   const clickedTarget = event.target;
@@ -73,6 +75,7 @@ addTaskButton.addEventListener('click', addTask);
 
 clearListButtton.addEventListener('click', () => {
   list.innerHTML = '';
+  localStorage.setItem('taskList', '[]');
 });
 
 removeCompletedButton.addEventListener('click', () => {
@@ -94,6 +97,28 @@ saveButton.addEventListener('click', () => {
         classes: list.children[i].className.split(' ')});
     }
     localStorage.setItem('taskList', JSON.stringify(tasks));
+  }
+});
+
+moveUp.addEventListener('click', () => {
+  const elementToMove = document.querySelector('.clicked');
+  let previousElement = null;
+  if (elementToMove !== null) {
+    previousElement = elementToMove.previousElementSibling;
+  }
+  if (previousElement !== null) {
+    list.insertBefore(elementToMove, previousElement);
+  }
+});
+
+moveDown.addEventListener('click', () => {
+  const elementToMove = document.querySelector('.clicked');
+  let nextElement = null;
+  if (elementToMove !== null) {
+    nextElement = elementToMove.nextElementSibling;
+  }
+  if (nextElement !== null) {
+    nextElement.after(elementToMove);
   }
 });
 

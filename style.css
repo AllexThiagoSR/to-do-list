@@ -5,3 +5,8 @@
 .completed {
   text-decoration: line-through;
 }
+
+#lista-tarefas {
+  display: flex;
+  flex-direction: column;
+}
