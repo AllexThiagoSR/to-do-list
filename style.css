@@ -1,12 +1,77 @@
+/* * {
+  border: 1px red solid;
+} */
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5% 25%;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+#list-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+
+#lista-tarefas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+#add-task-section {
+  display: flex;
+  justify-content: center;
+  margin: 5% 0;
+}
+
+#add-task-section button {
+  margin-left: 5px;
+}
+
+#funcs-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#manage-selected {
+  display: flex;
+  flex-wrap: wrap;
+  width: 33%;
+  flex-grow: 2;
+}
+
+#manage-selected span{
+  width: 100%;
+}
+
+#save-section {
+  flex-grow: 1;
+}
+
+#remove-section {
+  flex-grow: 1;
+}
+
 .clicked {
   background-color: gray;
 }
 
 .completed {
   text-decoration: line-through;
-}
-
-#lista-tarefas {
-  display: flex;
-  flex-direction: column;
 }

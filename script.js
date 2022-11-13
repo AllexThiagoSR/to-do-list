@@ -9,6 +9,21 @@ const moveUp = document.getElementById('mover-cima');
 const moveDown = document.getElementById('mover-baixo');
 const removeSelected = document.getElementById('remover-selecionado');
 
+const updateSaved = () => {
+  console.log(localStorage.getItem('tasksList'));
+  if (localStorage.getItem('taskList') !== '[]') {
+    const tasks = [];
+
+    for (let i = 0; i < list.children.length; i += 1) {
+      tasks.push({
+        text: list.children[i].innerText,
+        classes: list.children[i].className.split(' '),
+      });
+    }
+    localStorage.setItem('taskList', JSON.stringify(tasks));
+  }
+};
+
 const selectTask = (event) => {
   const clickedTarget = event.target;
   if (clickedTarget.className.includes('clicked')) {
@@ -36,7 +51,9 @@ const creatListItem = (text, classes = []) => {
   li.innerText = text;
   li.className = 'list-item';
   for (let index = 0; index < classes.length; index += 1) {
-    li.classList.add(classes[index]);
+    if (classes[index] !== 'clicked') {
+      li.classList.add(classes[index]);
+    }
   }
   li.addEventListener('click', selectTask);
   li.addEventListener('dblclick', completeTask);
@@ -113,6 +130,7 @@ moveUp.addEventListener('click', () => {
   if (previousElement !== null) {
     list.insertBefore(elementToMove, previousElement);
   }
+  updateSaved();
 });
 
 moveDown.addEventListener('click', () => {
@@ -124,6 +142,7 @@ moveDown.addEventListener('click', () => {
   if (nextElement !== null) {
     nextElement.after(elementToMove);
   }
+  updateSaved();
 });
 
 removeSelected.addEventListener('click', () => {
