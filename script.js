@@ -9,6 +9,14 @@ addTaskButton.addEventListener('click', () => {
     const li = document.createElement('li');
     li.innerText = inputValue;
     li.className = 'list-item';
+    li.addEventListener('click', (event) => {
+      const target = event.target;
+      if (target.className.includes('clicked')) {
+        target.classList.remove('clicked');
+      } else {
+        target.classList.add('clicked');
+      }
+    })
     list.appendChild(li);
   } else {
     alert('Task inválida!!')
