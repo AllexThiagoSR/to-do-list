@@ -2,6 +2,7 @@ const addTaskButton = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const list = document.getElementById('lista-tarefas');
 const clicked = document.getElementsByClassName('clicked');
+const clearList = document.getElementById('apaga-tudo');
 
 const selectTask = (event) => {
   const target = event.target;
@@ -38,4 +39,8 @@ addTaskButton.addEventListener('click', () => {
   } else {
     alert('Task inválida!!')
   }
+});
+
+clearList.addEventListener('click', () =>{
+  list.innerHTML = '';
 });
