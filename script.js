@@ -6,24 +6,24 @@ const clearListButtton = document.getElementById('apaga-tudo');
 const removeCompletedButton = document.getElementById('remover-finalizados');
 
 const selectTask = (event) => {
-  const target = event.target;
-  if (target.className.includes('clicked')) {
-    target.classList.remove('clicked');
+  const clickedTarget = event.target;
+  if (clickedTarget.className.includes('clicked')) {
+    clickedTarget.classList.remove('clicked');
   } else if (clicked.length === 0) {
-    target.classList.add('clicked');
+    clickedTarget.classList.add('clicked');
   } else {
     clicked[0].classList.remove('clicked');
-    target.classList.add('clicked');
+    clickedTarget.classList.add('clicked');
   }
 };
 
 const completeTask = (event) => {
-  const target = event.target;
+  const clickedTarget = event.target;
 
-  if (target.className.includes('completed')) {
-    target.classList.remove('completed');
+  if (clickedTarget.className.includes('completed')) {
+    clickedTarget.classList.remove('completed');
   } else {
-    target.classList.add('completed');
+    clickedTarget.classList.add('completed');
   }
 };
 
@@ -38,18 +38,18 @@ addTaskButton.addEventListener('click', () => {
     li.addEventListener('dblclick', completeTask);
     list.appendChild(li);
   } else {
-    alert('Task inválida!!')
+    alert('Task inválida!!');
   }
 });
 
-clearListButtton.addEventListener('click', () =>{
+clearListButtton.addEventListener('click', () => {
   list.innerHTML = '';
 });
 
 removeCompletedButton.addEventListener('click', () => {
   const completed = document.querySelectorAll('.completed');
 
-  for (let index in Object.keys(completed)) {
+  for (let index = 0; index < completed.length; index += 1) {
     completed[index].remove();
   }
 });
