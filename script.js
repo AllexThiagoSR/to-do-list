@@ -31,7 +31,7 @@ const completeTask = (event) => {
   }
 };
 
-const creatListItem = (text, classes=[]) => {
+const creatListItem = (text, classes = []) => {
   const li = document.createElement('li');
   li.innerText = text;
   li.className = 'list-item';
@@ -94,8 +94,10 @@ saveButton.addEventListener('click', () => {
     const tasks = [];
 
     for (let i = 0; i < list.children.length; i += 1) {
-      tasks.push({text: list.children[i].innerText,
-        classes: list.children[i].className.split(' ')});
+      tasks.push({
+        text: list.children[i].innerText,
+        classes: list.children[i].className.split(' '),
+      });
     }
     localStorage.setItem('taskList', JSON.stringify(tasks));
     alert('Lista salva com sucesso!!');
