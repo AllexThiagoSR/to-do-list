@@ -7,6 +7,7 @@ const removeCompletedButton = document.getElementById('remover-finalizados');
 const saveButton = document.getElementById('salvar-tarefas');
 const moveUp = document.getElementById('mover-cima');
 const moveDown = document.getElementById('mover-baixo');
+const removeSelected = document.getElementById('remover-selecionado');
 
 const selectTask = (event) => {
   const clickedTarget = event.target;
@@ -97,6 +98,7 @@ saveButton.addEventListener('click', () => {
         classes: list.children[i].className.split(' ')});
     }
     localStorage.setItem('taskList', JSON.stringify(tasks));
+    alert('Lista salva com sucesso!!');
   }
 });
 
@@ -120,6 +122,12 @@ moveDown.addEventListener('click', () => {
   if (nextElement !== null) {
     nextElement.after(elementToMove);
   }
+});
+
+removeSelected.addEventListener('click', () => {
+  const elementToRemove = document.querySelector('.clicked');
+
+  elementToRemove.remove();
 });
 
 savedTasks();
