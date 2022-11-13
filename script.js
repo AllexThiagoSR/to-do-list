@@ -4,6 +4,7 @@ const list = document.getElementById('lista-tarefas');
 const clicked = document.getElementsByClassName('clicked');
 const clearListButtton = document.getElementById('apaga-tudo');
 const removeCompletedButton = document.getElementById('remover-finalizados');
+const saveButton = document.getElementById('salvar-tarefas');
 
 const selectTask = (event) => {
   const clickedTarget = event.target;
@@ -27,20 +28,48 @@ const completeTask = (event) => {
   }
 };
 
-addTaskButton.addEventListener('click', () => {
+const creatListItem = (text, classes=[]) => {
+  const li = document.createElement('li');
+  li.innerText = text;
+  li.className = 'list-item';
+  for (let index = 0; index < classes.length; index += 1) {
+    li.classList.add(classes[index]);
+  }
+  li.addEventListener('click', selectTask);
+  li.addEventListener('dblclick', completeTask);
+  return li;
+};
+
+const savedTasks = () => {
+  if (localStorage.taskList === undefined) {
+    localStorage.setItem('taskList', '[]');
+  } else {
+    const taskList = JSON.parse(localStorage.getItem('taskList'));
+
+    for (let index = 0; index < taskList.length; index += 1) {
+      const classesAndText = taskList[index];
+      list.appendChild(creatListItem(classesAndText.text, classesAndText.classes));
+    }
+  }
+};
+
+const addTask = () => {
   const inputValue = input.value;
   if (inputValue !== '') {
     input.value = '';
-    const li = document.createElement('li');
-    li.innerText = inputValue;
-    li.className = 'list-item';
-    li.addEventListener('click', selectTask);
-    li.addEventListener('dblclick', completeTask);
-    list.appendChild(li);
+    list.appendChild(creatListItem(inputValue));
   } else {
     alert('Task inválida!!');
   }
+};
+
+input.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    addTask();
+  }
 });
+
+addTaskButton.addEventListener('click', addTask);
 
 clearListButtton.addEventListener('click', () => {
   list.innerHTML = '';
@@ -53,3 +82,19 @@ removeCompletedButton.addEventListener('click', () => {
     completed[index].remove();
   }
 });
+
+saveButton.addEventListener('click', () => {
+  if (list.children.length === 0) {
+    alert('Sem tarefas para salvar');
+  } else {
+    const tasks = [];
+
+    for (let i = 0; i < list.children.length; i += 1) {
+      tasks.push({text: list.children[i].innerText,
+        classes: list.children[i].className.split(' ')});
+    }
+    localStorage.setItem('taskList', JSON.stringify(tasks));
+  }
+});
+
+savedTasks();
