@@ -6,7 +6,8 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 5% 25%;
+  padding: 5% 20%;
+  background-color: #67b49b;
 }
 
 header {
@@ -17,12 +18,26 @@ header {
 
 h1 {
   text-align: center;
+  margin: 20px 0 10px;
+}
+
+#big-container {
+  flex-grow: 1;
+  background-color: #f1a9f9;
+  border-radius: 30px;
+}
+
+#funcionamento {
+  margin: 0 0 10px;
+  text-align: center;
 }
 
 #list-section {
   display: flex;
   justify-content: center;
-  margin-bottom: 5%;
+  background-color: whitesmoke;
+  margin: 0 10%;
+  border-radius: 10px;
 }
 
 #lista-tarefas {
@@ -33,39 +48,56 @@ h1 {
   padding: 0;
 }
 
-#add-task-section {
+.add-task-section {
   display: flex;
   justify-content: center;
-  margin: 5% 0;
+  margin: 2% 0 3%;
 }
 
-#add-task-section button {
-  margin-left: 5px;
+.add-task-div {
+  display: flex;
+  justify-content: center;
+  width: 50%;
 }
 
 #funcs-section {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 #manage-selected {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 33%;
-  flex-grow: 2;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+
 }
 
 #manage-selected span{
-  width: 100%;
+  text-align: center;
+  width: fit-content;
+}
+
+#manage-buttons {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#manage-buttons > * {
+  margin: 5% 2% 0;
+  border-radius: 20px;
 }
 
 #save-section {
   flex-grow: 1;
-}
-
-#remove-section {
-  flex-grow: 1;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .clicked {
@@ -74,4 +106,9 @@ h1 {
 
 .completed {
   text-decoration: line-through;
+}
+
+.list-item {
+  min-width: 200px;
+  text-align: center;
 }
