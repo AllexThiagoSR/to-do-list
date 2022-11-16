@@ -10,7 +10,6 @@ const moveDown = document.getElementById('mover-baixo');
 const removeSelected = document.getElementById('remover-selecionado');
 
 const updateSaved = () => {
-  console.log(localStorage.getItem('tasksList'));
   if (localStorage.getItem('taskList') !== '[]') {
     const tasks = [];
 
@@ -129,6 +128,7 @@ moveUp.addEventListener('click', () => {
   }
   if (previousElement !== null) {
     list.insertBefore(elementToMove, previousElement);
+    elementToMove.classList.remove('clicked');
   }
   updateSaved();
 });
@@ -141,6 +141,7 @@ moveDown.addEventListener('click', () => {
   }
   if (nextElement !== null) {
     nextElement.after(elementToMove);
+    // elementToMove.classList.remove('clicked');
   }
   updateSaved();
 });
