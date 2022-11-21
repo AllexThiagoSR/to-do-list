@@ -25,9 +25,7 @@ const updateSaved = () => {
 
 const selectTask = (event) => {
   const clickedTarget = event.target;
-  if (clickedTarget.className.includes('clicked')) {
-    clickedTarget.classList.remove('clicked');
-  } else if (clicked.length === 0) {
+  if (clicked.length === 0) {
     clickedTarget.classList.add('clicked');
   } else {
     clicked[0].classList.remove('clicked');
