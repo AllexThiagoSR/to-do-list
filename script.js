@@ -126,7 +126,6 @@ moveUp.addEventListener('click', () => {
   }
   if (previousElement !== null) {
     list.insertBefore(elementToMove, previousElement);
-    elementToMove.classList.remove('clicked');
   }
   updateSaved();
 });
@@ -139,7 +138,6 @@ moveDown.addEventListener('click', () => {
   }
   if (nextElement !== null) {
     nextElement.after(elementToMove);
-    // elementToMove.classList.remove('clicked');
   }
   updateSaved();
 });
