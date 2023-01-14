@@ -25,15 +25,12 @@ clearListButtton.addEventListener('click', () => {
 removeCompletedButton.addEventListener('click', () => {
   const completed = document.querySelectorAll('.completed');
 
-  for (let index = 0; index < completed.length; index += 1) {
-    completed[index].remove();
-  }
+  for (let index = 0; index < completed.length; index += 1) completed[index].remove();
 });
 
 saveButton.addEventListener('click', () => {
-  if (list.children.length === 0) {
-    alert('Sem tarefas para salvar');
-  } else {
+  if (list.children.length === 0) alert('Sem tarefas para salvar');
+  else {
     const tasks = [];
 
     for (let i = 0; i < list.children.length; i += 1) {
@@ -53,21 +50,16 @@ moveUp.addEventListener('click', () => {
   if (elementToMove !== null) {
     previousElement = elementToMove.previousElementSibling;
   }
-  if (previousElement !== null) {
-    list.insertBefore(elementToMove, previousElement);
-  }
+  if (previousElement !== null) list.insertBefore(elementToMove, previousElement);
   updateSaved();
 });
 
 moveDown.addEventListener('click', () => {
   const elementToMove = document.querySelector('.clicked');
   let nextElement = null;
-  if (elementToMove !== null) {
-    nextElement = elementToMove.nextElementSibling;
-  }
-  if (nextElement !== null) {
-    nextElement.after(elementToMove);
-  }
+  if (elementToMove !== null) nextElement = elementToMove.nextElementSibling;
+  if (nextElement !== null) nextElement.after(elementToMove);
+
   updateSaved();
 });
 
