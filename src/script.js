@@ -1,3 +1,5 @@
+import './style.css';
+
 const addTaskButton = document.getElementById('criar-tarefa');
 const input = document.getElementById('texto-tarefa');
 const list = document.getElementById('lista-tarefas');
